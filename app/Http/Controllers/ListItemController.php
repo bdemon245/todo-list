@@ -9,10 +9,14 @@ class ListItemController extends Controller
 {
     public function store(Request $req)
     {
-        $list = new ListItem();
-        $list->item = $req->item;
-        $list->save();
-        return back();
+        if ($req->item !== null) {
+            $list = new ListItem();
+            $list->item = $req->item;
+            $list->save();
+            return back();
+        }else{
+            return back();
+        }
     }
     public function toggle($id)
     {
