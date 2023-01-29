@@ -22,6 +22,8 @@ use App\Http\Controllers\ListItemController;
 Route::post('/store-item', [ListItemController::class, 'store'])->name('item.store');
 Route::post('/item-disable/{id}', [ListItemController::class, 'toggle'])->name('item.toggle');
 Route::delete('/item-destroy/{id}', [ListItemController::class, 'destroy'])->name('item.destroy');
+Route::post('/item-edit/{id}', [ListItemController::class, 'edit'])->name('item.edit');
+Route::put('/item-update/{id}', [ListItemController::class, 'update'])->name('item.update');
 Route::get('/', [HomeController::class, 'fetch']);
 
 Route::get('/dashboard', function () {

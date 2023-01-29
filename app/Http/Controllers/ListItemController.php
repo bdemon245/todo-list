@@ -14,7 +14,7 @@ class ListItemController extends Controller
             $list->item = $req->item;
             $list->save();
             return back();
-        }else{
+        } else {
             return back();
         }
     }
@@ -30,5 +30,25 @@ class ListItemController extends Controller
         $list = ListItem::find($id);
         $list->delete();
         return back();
+    }
+    public function edit($id)
+    {
+        $list = ListItem::find($id);
+
+        $activeLists = ListItem::latest()->where('status', 1)->get();
+        $inactiveLists = ListItem::latest()->where('status', 0)->get();
+        // dd($list->id);
+        return view('update', compact('list', 'activeLists', 'inactiveLists'));
+    }
+    public function update(Request $req, $id)
+    {
+        if ($req->item !== null) {
+            $list = ListItem::find($id);
+            $list->item = $req->item;
+            $list->save();
+            return back();
+        } else {
+            return back();
+        }
     }
 }
