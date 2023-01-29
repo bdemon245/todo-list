@@ -46,9 +46,9 @@ class ListItemController extends Controller
             $list = ListItem::find($id);
             $list->item = $req->item;
             $list->save();
-            return back();
+            return redirect('/');
         } else {
-            return back();
+            return redirect('/');
         }
     }
 }

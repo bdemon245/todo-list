@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{{-- {{dd($list->item)}} --}}
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -23,7 +24,7 @@
                     @csrf
                     @method('PUT')
                     <div class="flex gap-4" >
-                        <input class="input shadow-lg w-full" type="text" name="item" id="" value={{$list->item}}>
+                        <textarea class="input shadow-lg w-full" type="text" name="item" id="">{{$list->item}}</textarea>
                         <button type="submit" class="btn btn-primary text-white">Update</button>
                     </div>
                 </form>
