@@ -14,4 +14,17 @@ class ListItemController extends Controller
         $list->save();
         return back();
     }
+    public function toggle($id)
+    {
+        $list = ListItem::find($id);
+        $list->status = $list->status === 0 ? 1 : 0;
+        $list->save();
+        return back();
+    }
+    public function destroy($id)
+    {
+        $list = ListItem::find($id);
+        $list->delete();
+        return back();
+    }
 }

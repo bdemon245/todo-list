@@ -9,8 +9,9 @@ class HomeController extends Controller
 {
     public function fetch()
     {
-        dd('ok');
-        $lists = ListItem::latest()->get();
-        return view('welcome', compact('lists'));
+        $activeLists = ListItem::latest()->where('status', 1)->get();
+        $inactiveLists = ListItem::latest()->where('status', 0)->get();
+        // dd($inactivelists);
+        return view('welcome', compact('activeLists', 'inactiveLists'));
     }
 }

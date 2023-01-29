@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ListItemController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ListItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::post('/store-item', [ListItemController::class, 'store'])->name('item.store');
-
+Route::post('/item-disable/{id}', [ListItemController::class, 'toggle'])->name('item.toggle');
+Route::delete('/item-destroy/{id}', [ListItemController::class, 'destroy'])->name('item.destroy');
 Route::get('/', [HomeController::class, 'fetch']);
 
 Route::get('/dashboard', function () {

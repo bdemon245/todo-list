@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('list_items', function (Blueprint $table) {
             $table->id();
             $table->string('item');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
